@@ -20,3 +20,4 @@ deploy:
   bucket: builds.website.kicad.io
   local-dir: public
   upload-dir: $TRAVIS_BRANCH-$COMMIT
+  skip_cleanup: true

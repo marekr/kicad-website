@@ -1,16 +1,19 @@
-# Install the apt prerequisites
 addons:
   apt:
     packages:
-      - ruby
-      - wget
-
-# We need asciidoctor and exact hugo version
+    - ruby
+    - wget
 before_install:
-  - sudo gem install asciidoctor
-  - wget https://github.com/gohugoio/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.deb
-  - sudo dpkg -i hugo_0.30_Linux-64bit.deb
-
-# Build the website
+- sudo gem install asciidoctor
+- wget https://github.com/gohugoio/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.deb
+- sudo dpkg -i hugo_0.30_Linux-64bit.deb
 script:
-  - hugo
+- hugo
+deploy:
+  provider: gcs
+  access_key_id: GOOG2C3QQFQTVXFM4CF5
+  secret_access_key:
+    secure: QFb20y0USDBrViDu1mhtatBMnBQIfyAOj8vmPGdcuBsf0h1kpwdNRRXK+v3QR1361Tsd1hX3OEyBUY8ltOzwgpJY6U/Vw3Fz+eGl8xCVpqfTq7Oevfzp9PbRct1rTCICfez/Eq2yBXDVJNbnU6oc/v2NRSfidolw3FbmDUpBCtLmVN9sRK4inKOFTNKpRsX5VKzJrKwKfp1gBrfDDb9O+YXdyiy2CnW5w0QFB8PxuUJfi2KZLN42fV3ZiOc0WtMq72cGaGEsQzHRiQnJB66dF3PxAEDVQ6sFAU5S38SitDx2wI07MgPsoQxAb+aCnxywPTQJpo6todUw3GQ3hZZ6/ZvxxLYZkvz07gXT6ZtuCTkW4c6X9Thb523hPhx3zpxsEkOdhzU7/rJSiENt0k8TZ8RZ/PVcZpGwGR1VcLR87isqERxJqEqEV4wh1R5H2tF70pCbO/xT/umGcpH/8lmmJ7fcOVmxwb+2XJyrLjLkgEi0ABOOFhIkxe2rWICvlhRpPqPyMw8s9uMOOn/t1AX1H+86LOR4zFR8uP290CYTsCYmsrj2Os/xzViULRcMQbZcFswIjVEQGmfHyRXaxZRk/+ddTdXeECUD2O4dIEut18lMcOheRNjvTmktVPksG7EIeXJ/5ea4wqvPTe4g8YWX4MDQsXNGuJFWxoVmj4EFO7Q=
+  bucket: builds.website.kicad.io
+  local-dir: public
+  upload-dir: $TRAVIS_COMMIT

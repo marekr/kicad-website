@@ -5,6 +5,7 @@ addons:
     - wget
 before_install:
 - sudo gem install asciidoctor
+- pip install git+https://github.com/simonvanderveldt/travis-github-pr-bot.git
 - wget https://github.com/gohugoio/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.deb
 - sudo dpkg -i hugo_0.30_Linux-64bit.deb
 script:
@@ -16,5 +17,10 @@ deploy:
     secure: QFb20y0USDBrViDu1mhtatBMnBQIfyAOj8vmPGdcuBsf0h1kpwdNRRXK+v3QR1361Tsd1hX3OEyBUY8ltOzwgpJY6U/Vw3Fz+eGl8xCVpqfTq7Oevfzp9PbRct1rTCICfez/Eq2yBXDVJNbnU6oc/v2NRSfidolw3FbmDUpBCtLmVN9sRK4inKOFTNKpRsX5VKzJrKwKfp1gBrfDDb9O+YXdyiy2CnW5w0QFB8PxuUJfi2KZLN42fV3ZiOc0WtMq72cGaGEsQzHRiQnJB66dF3PxAEDVQ6sFAU5S38SitDx2wI07MgPsoQxAb+aCnxywPTQJpo6todUw3GQ3hZZ6/ZvxxLYZkvz07gXT6ZtuCTkW4c6X9Thb523hPhx3zpxsEkOdhzU7/rJSiENt0k8TZ8RZ/PVcZpGwGR1VcLR87isqERxJqEqEV4wh1R5H2tF70pCbO/xT/umGcpH/8lmmJ7fcOVmxwb+2XJyrLjLkgEi0ABOOFhIkxe2rWICvlhRpPqPyMw8s9uMOOn/t1AX1H+86LOR4zFR8uP290CYTsCYmsrj2Os/xzViULRcMQbZcFswIjVEQGmfHyRXaxZRk/+ddTdXeECUD2O4dIEut18lMcOheRNjvTmktVPksG7EIeXJ/5ea4wqvPTe4g8YWX4MDQsXNGuJFWxoVmj4EFO7Q=
   bucket: builds.website.kicad.io
   local-dir: public
-  upload-dir: $TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/$TRAVIS_BUILD_ID
+  upload-dir: "$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/$TRAVIS_BUILD_ID"
   skip_cleanup: true
+after_deploy:
+- echo "Uploaded artifacts" | travis_bot
+env:
+  global:
+    secure: C28ebXzAGJWq9G+Pe2fECO0aQJMbAyYsVU+iivX0bluk/CwhXo9lwN2eGlFwJpZF06sNYQY+2f0S2Z/WaUDyeGp3gYEgGclw1g9MTcYrWpvx5AfeurDqazQQ+VkMno2F6QGrxVWO5JVz62nO+4xx9QQRBCNMIG7rzZEszvyemLz0AQy0BPJiejY5brKKVJXcds1P8cIVAQJ7KfxSlAgoQLVmcrMySJeqmeITKWjoIagrFHQ5ACuk80wH3fRDWwBI/je//Cxuk8CnU2IgKAsi8o14+SEbpnFL23SUDrF+bcxE3M5UVT0qdK9TP+GvNjLQVC1kgncv35kWNWP6PVpxOaPSgfKBid1XWF3xn0AKd0YQl8Papsl9x+8lOplrba8WXyFuBLhdYxAyZ9R8tfMsY/qNNc0hYDuuI+lSIP00f8HirRyRDGEqgnV2YSck5mgCuA0fzdEqrY2FnThmpInt4G5x3UYQK9m7WAIKRJCFKG62JZR7dI7lqijh1qtmxvUfLg1JG0TboPATqzar73yj4h3ecUUHdZrFxC3twixRtY0NCwgSKyvyoDH09pUqyvQkBjzdDQiWyfoEP6WlJaZ4lLrY7TDlUpOWgzjsjGHpAzpE5+UjScu7IKpqCMrSUjOAXFjKHklv7nPBBMUpjD2a27W70vFGtBa/8fal3T7cYvw=

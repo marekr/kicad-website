@@ -20,7 +20,7 @@ deploy:
   upload-dir: "$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/$TRAVIS_BUILD_ID"
   skip_cleanup: true
 after_deploy:
-- "Uploaded artifacts to http://builds.website.kicad.io/$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/$TRAVIS_BUILD_ID" | travis_bot
+- echo "Uploaded artifacts to http://builds.website.kicad.io/$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/$TRAVIS_BUILD_ID" | travis_bot
 env:
   global:
     secure: C28ebXzAGJWq9G+Pe2fECO0aQJMbAyYsVU+iivX0bluk/CwhXo9lwN2eGlFwJpZF06sNYQY+2f0S2Z/WaUDyeGp3gYEgGclw1g9MTcYrWpvx5AfeurDqazQQ+VkMno2F6QGrxVWO5JVz62nO+4xx9QQRBCNMIG7rzZEszvyemLz0AQy0BPJiejY5brKKVJXcds1P8cIVAQJ7KfxSlAgoQLVmcrMySJeqmeITKWjoIagrFHQ5ACuk80wH3fRDWwBI/je//Cxuk8CnU2IgKAsi8o14+SEbpnFL23SUDrF+bcxE3M5UVT0qdK9TP+GvNjLQVC1kgncv35kWNWP6PVpxOaPSgfKBid1XWF3xn0AKd0YQl8Papsl9x+8lOplrba8WXyFuBLhdYxAyZ9R8tfMsY/qNNc0hYDuuI+lSIP00f8HirRyRDGEqgnV2YSck5mgCuA0fzdEqrY2FnThmpInt4G5x3UYQK9m7WAIKRJCFKG62JZR7dI7lqijh1qtmxvUfLg1JG0TboPATqzar73yj4h3ecUUHdZrFxC3twixRtY0NCwgSKyvyoDH09pUqyvQkBjzdDQiWyfoEP6WlJaZ4lLrY7TDlUpOWgzjsjGHpAzpE5+UjScu7IKpqCMrSUjOAXFjKHklv7nPBBMUpjD2a27W70vFGtBa/8fal3T7cYvw=

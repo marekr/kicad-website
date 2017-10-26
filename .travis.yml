@@ -5,7 +5,7 @@ addons:
     - wget
 before_install:
 - sudo gem install asciidoctor
-- pip install git+https://github.com/simonvanderveldt/travis-github-pr-bot.git
+- sudo pip install git+https://github.com/simonvanderveldt/travis-github-pr-bot.git
 - wget https://github.com/gohugoio/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.deb
 - sudo dpkg -i hugo_0.30_Linux-64bit.deb
 script:

@@ -15,10 +15,10 @@ env:
 before_install:
   - gem install asciidoctor
   - gem install html-proofer
-  - wget https://github.com/gohugoio/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.deb
-  - dpkg -i hugo_0.30_Linux-64bit.deb
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.tar.gz
+  - tar -xzvf hugo_0.30.2_Linux-64bit.tar.gz
 
 # Build the website
 script:
-  - hugo
+  - ./hugo
   - htmlproofer ./public --external_only --only_4xx
